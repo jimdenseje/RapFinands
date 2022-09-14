@@ -147,6 +147,7 @@ namespace Rap_Finands
 
             Console.Clear();
             Console.WriteLine("Konto for "+k.ejer+": "+k.registreringsnr+" "+k.kontonr);
+            Console.WriteLine();
             Console.WriteLine("".PadRight(50, '#'));
             Console.WriteLine("Tekst".PadRight(30) + "Beløb".PadRight(10) + "Saldo");
             foreach (Transaktion t in k.transaktioner) {
