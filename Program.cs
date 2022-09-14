@@ -136,14 +136,14 @@ namespace Rap_Finands
         }
         static void dos_udskrivKonto(Konto k) {
             Console.WriteLine("Konto for "+k.ejer+": "+k.registreringsnr+" "+k.kontonr);
-            Console.WriteLine("================");
-            Console.WriteLine("Tekst\t\t\t\tBeløb\t\tSaldo");
+            Console.WriteLine("".PadRight(50, '#'));
+            Console.WriteLine("Tekst".PadRight(30) + "Beløb".PadRight(10) + "Saldo");
             foreach (Transaktion t in k.transaktioner) {
-                Console.Write(t.tekst+"\t\t\t\t");
-                Console.Write(t.amount+"\t\t");
+                Console.Write(t.tekst.PadRight(30));
+                Console.Write(t.amount.ToString().PadRight(10));
                 Console.WriteLine(t.saldo);
             }
-            Console.WriteLine("================\n");
+            Console.WriteLine("".PadRight(50, '#'));
 
         }
         
