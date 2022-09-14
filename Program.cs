@@ -37,11 +37,12 @@ namespace Rap_Finands
             
         }
         static void dos_start() {
-            Console.WriteLine("Velkommen til Rap Finans af Konrad Sommer");
-            Console.WriteLine("Hvad vil du gøre nu?");
-            
             bool blivVedogved = true;
-            while (blivVedogved) {
+            while (blivVedogved)
+            {
+                Console.WriteLine("Velkommen til Rap Finans af Konrad Sommer");
+                Console.WriteLine("Hvad vil du gøre nu?\n");
+
                 Console.WriteLine("1. Opret ny konto");
                 Console.WriteLine("2. Hæv/sæt ind");
                 Console.WriteLine("3. Se en oversigt");
@@ -73,8 +74,9 @@ namespace Rap_Finands
             }
             Console.Clear();
         }
-        static Konto dos_findKonto() 
+        static Konto dos_findKonto()
         {
+            Console.Clear();
             for (var i = 1; i <= konti.Count;i++)
             {
                 Console.WriteLine(i+". "+konti[i-1].registreringsnr+" "+konti[i-1].kontonr+" ejes af "+konti[i-1].ejer);
@@ -91,6 +93,7 @@ namespace Rap_Finands
         }
         static void dos_opretTransaktion(Konto k) 
         {
+            Console.Clear();
             Console.Write("Tekst: ");
             string tekst = Console.ReadLine();
             Console.Write("Beløb: ");
@@ -100,15 +103,27 @@ namespace Rap_Finands
                 gem();
             } else
                 Console.WriteLine("Transaktionen kunne ikke gemmes (Der var sikkert ikke penge nok på kontoen)");
+            
+            Console.Write("\nTryk paa en kan for at fortsaette");
+            Console.ReadKey();
+            Console.Clear();
+
         }
-        static Konto dos_opretKonto() 
+        static Konto dos_opretKonto()
         {
+            Console.Clear();
+
             Konto k = lavKonto();
             Console.Write("Navn på kontoejer:");
             k.ejer = Console.ReadLine();
             Console.WriteLine("Konto oprettet!");
             konti.Add(k);
             gem();
+
+            Console.Write("\nTryk paa en kan for at fortsaette");
+            Console.ReadKey();
+            Console.Clear();
+
             return k;
         }
         public static Konto lavKonto() {
@@ -129,6 +144,8 @@ namespace Rap_Finands
             return nr;
         }
         static void dos_udskrivKonto(Konto k) {
+
+            Console.Clear();
             Console.WriteLine("Konto for "+k.ejer+": "+k.registreringsnr+" "+k.kontonr);
             Console.WriteLine("".PadRight(50, '#'));
             Console.WriteLine("Tekst".PadRight(30) + "Beløb".PadRight(10) + "Saldo");
@@ -139,8 +156,12 @@ namespace Rap_Finands
             }
             Console.WriteLine("".PadRight(50, '#'));
 
+            Console.Write("\nTryk paa en kan for at fortsaette");
+            Console.ReadKey();
+            Console.Clear();
+
         }
-        
+
         public static bool GemTrans(Konto konto, string tekst, float belob) {
             var saldo = findSaldo(konto);
             if (saldo + belob < 0) return false;
