@@ -147,9 +147,9 @@ namespace Rap_Finands
 
         }
         
-        public static bool GemTrans(Konto konto, string tekst, float beløb) {
+        public static bool GemTrans(Konto konto, string tekst, float belob) {
             var saldo = findSaldo(konto);
-            if (saldo + beløb < 0) return false;
+            if (saldo + belob < 0) return false;
             var t = new Transaktion();
             t.tekst = tekst;
             t.amount = belob;
